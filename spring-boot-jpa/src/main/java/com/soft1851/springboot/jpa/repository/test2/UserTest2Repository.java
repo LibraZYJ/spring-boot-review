@@ -1,8 +1,6 @@
-package com.soft1851.springboot.jpa.dao;
+package com.soft1851.springboot.jpa.repository.test2;
 
 import com.soft1851.springboot.jpa.model.cascade.User;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -13,46 +11,13 @@ import java.util.List;
 
 /**
  * @author Yujie_Zhao
- * @ClassName UserRepository
+ * @ClassName UserTest2Repository
  * @Description TODO
- * @Date 2020/5/13  8:43
+ * @Date 2020/5/13  17:17
  * @Version 1.0
  **/
-public interface UserRepository extends JpaRepository<User, Long> {
 
-
-    //    Spring Data JPA 的高级用法\
-
-    @Query("select u from User u")
-    Page<User> findALL(Pageable pageable);
-
-//    @Query(value = "select * from user u where u.nick_name = ?1", nativeQuery = true)
-//    Page<User> findByNickName(String nickName, Pageable pageable);
-
-    @Query("select u from User u where u.nickName = :nickName")
-    Page<User> findByNickName(@Param("nickName") String nickName, Pageable pageable);
-
-
-    @Transactional(timeout = 10,rollbackFor = RuntimeException.class)
-    @Modifying
-    @Query("update User set userName = ?1 where id = ?2")
-    int modifyById(String  userName, Long id);
-
-    @Override
-    @Transactional
-    @Modifying
-    @Query("delete from User where id = ?1")
-    void deleteById(Long id);
-
-//****************************************************************************
-
-    /**
-     * 根据方法名解析：按照age查询所有
-     *
-     * @param age
-     * @return
-     */
-    User findAllByAgeBefore(int age);
+public interface UserTest2Repository extends JpaRepository<User, Long> {
 
     /**
      * 根据方法名解析：按userName和password相等查询唯一记录

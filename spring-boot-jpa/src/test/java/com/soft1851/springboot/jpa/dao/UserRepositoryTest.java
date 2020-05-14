@@ -1,13 +1,10 @@
 package com.soft1851.springboot.jpa.dao;
 
-import com.soft1851.springboot.jpa.model.User;
+import com.soft1851.springboot.jpa.model.cascade.User;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.*;
 
 import javax.annotation.Resource;
 import java.time.LocalDateTime;
@@ -27,9 +24,9 @@ class UserRepositoryTest {
 
     @Test
     void findByUserNameEqualsAndPasswordEquals() {
-        User user = userRepository.findByUserNameEqualsAndPasswordEquals("user3","123456");
+        User user = userRepository.findByUserNameEqualsAndPasswordEquals("Libra","123456");
         System.out.println(user);
-        assertNotNull(userRepository.findByUserNameEqualsAndPasswordEquals("user3","123456"));
+        assertNotNull(userRepository.findByUserNameEqualsAndPasswordEquals("Libra","123456"));
     }
 
     @Test
@@ -143,6 +140,24 @@ class UserRepositoryTest {
         log.info("单个查询结果： {}", optionalUser.orElse(null));
     }
 
+    @Test
+    void findByNickName() {
+//        Page<User> pageInfo = userRepository.findAll(
+//                PageRequest.of(1, 3, Sort.Direction.ASC, "id"));
+//        userRepository.findByNickName("nickName3",pageInfo);
+    }
 
+    @Test
+    void modifyById() {
+    }
 
+    @Test
+    public void testPageQuery()  {
+        //逆序排序User，获取分页，一页五个数据，第0页
+        int page=0,size=5;
+        Pageable pageable = PageRequest.of(page, size, Sort.Direction.DESC, "id");
+        Page<User> userList = userRepository.findALL(pageable);
+        System.out.println(userList.getContent());
+        System.out.println(userRepository.findByNickName("nickName19", pageable));
+    }
 }

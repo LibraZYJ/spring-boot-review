@@ -1,4 +1,4 @@
-package com.soft1851.springboot.jpa.model;
+package com.soft1851.springboot.jpa.model.cascade;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
