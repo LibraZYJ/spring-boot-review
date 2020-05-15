@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<div style="border-radius:5px;font-size:19px;width:680px;font-family:微软雅黑,'Helvetica Neue',Arial,sans-serif;margin:10px auto 0px;border:1px solid #eee;max-width:100%;">
+    <div style="width:100%;background:#c3ce25;color:#FFFFFF;border-radius:5px 5px 0 0;">
+        <p style="font-size:22px;word-break:break-all;padding:20px 32px;margin:0;"><span th:text="${siteTitle}"></span><a style="color:#FFFFFF;font-weight:bold;text-decoration:none;" target="_blank" th:href="${permalink}"><span th:text="${title}"></span></a></p>
+    </div>
+    <div style="margin:0px auto;width:90%">
+        <p><span th:text="${author}"/>
+        <p style="background:#EFEFEF;margin:15px 0px;padding:20px;border-radius:5px;font-size:20px;color:#333;"><span th:text="${text}"/></p>
+        <p><span th:text="${time}"/>
+        <img src="cid:img01" style="margin-left: 100px; width: 300px;height: 300px">
+        <p><a th:href="${manage}" target='_blank'></a></p>
+    </div>
+</div>
+​
+</body>
+</html>
