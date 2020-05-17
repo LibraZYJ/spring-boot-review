@@ -3,7 +3,6 @@ package com.soft1851.springboot.task.schedule.task;
 import com.soft1851.springboot.task.schedule.model.User;
 import com.soft1851.springboot.task.schedule.repository.UserRepository;
 import com.soft1851.springboot.task.schedule.service.MailService;
-import org.springframework.stereotype.Component;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
@@ -19,7 +18,7 @@ import java.util.Map;
  * @Author Yujie_zhao
  * @Date 2020/5/15
  **/
-@Component
+//@Component
 public class SchedulerTask {
     String name="Yujie_Zhao";
     @Resource

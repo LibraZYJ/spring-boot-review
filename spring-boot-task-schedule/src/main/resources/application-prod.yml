@@ -9,8 +9,7 @@ spring:
     port: 25
     username: 1836686674@qq.com
   application:
-#    name: spring-boot-jpa-hikari
-    name: spring-boot-jpa
+    name: spring-boot-task-schedule
   jpa:
     database: mysql
     show-sql: false
@@ -19,22 +18,39 @@ spring:
     hibernate:
       ddl-auto: update
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/test?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=UTF-8&useSSL=false
-    username: root
-    password: root
+    url: ENC(9AImVzKXgTg7BMtXmq6rL4dsD/fWDYygN0vvYyCkGbpVvTAec4uJuG0kooXS35wbBHFGRLNZ7fYY4fikMY5dsewnMe84JTvAXu9q+Ei6zXiKehrjfHSw/5sOm6NZaUUFM7TsTYE8MeMzgdZPtuU0HAg473D4wrscvnKIkKN0tvE=)
+    username: ENC(ne4/FcH6p50SRVYH2mu/Eg==)
+    password: ENC(5Ku7StyTuDKD7Xkz8WTvWw==)
     driver-class-name: com.mysql.cj.jdbc.Driver
-    type: com.zaxxer.hikari.HikariDataSource
-#    hikari:
-#      auto-commit: true
-#      minimum-idle: 2
-#      idle-timeout: 60000
-#      connection-timeout: 30000
-#      max-lifetime: 1800000
-#      pool-name: DatebookHikariCP
-#      maximum-pool-size: 5
+#    type: com.zaxxer.hikari.HikariDataSource
     hikari:
       maximumPoolSize: 15
       max-lifetime: 1800000
       minimum-idle: 2
       idle-timeout: 60000
       connection-timeout: 30000
+#  quartz:
+#    properties:
+#      org:
+#        quartz:
+#          scheduler:
+#            instanceName: clusteredScheduler #调度器的实例名
+#            instanceId: AUTO #调度器编号自动生成
+#          jobStore:
+#            class: org.quartz.impl.jdbcjobstore.JobStoreTX #作业存储类型
+#            driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate
+#            tablePrefix: qrtz_ #数据库表名前缀
+#            isClustered: true #开启分布式部署
+#            clusterCheckinInterval: 10000 #分布式节点有效性检查时间间隔,单位:秒
+#            useProperties: false
+#          threadPool:
+#            class: org.quartz.simpl.SimpleThreadPool #自带的线程池实现类
+#            threadCount: 10 #开启10个线程
+#            threadPriority: 5 #工作者线程的优先级
+#            threadsInheritContextClassLoaderOfInitializingThread: true
+    # 数据存储方式
+    job-store-type: jdbc
+# jasypt加密的密匙
+jasypt:
+  encryptor:
+    password: zyj
